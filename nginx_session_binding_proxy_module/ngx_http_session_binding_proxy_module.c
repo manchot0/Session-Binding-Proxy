@@ -276,7 +276,7 @@ static ngx_int_t ngx_http_session_binding_proxy_handler(ngx_http_request_t *r) {
 			i = 0;
 		}
 
-		if(ngx_strncmp((&header[i])->key.data, "Cookie",6) == 0) { //If the header is the cookie header
+		if (ngx_strncasecmp(header[i].key.data, (unsigned char *) "cookie",6) == 0) { //If the header is the cookie header
 			for(j = 0;j<sbplcf->variables->nelts;j++) { // For every specified cookie name in the conf
 				ngx_log_debug(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
 							"Session Binding Proxy Handler searching for: %V", &variable[j]);
