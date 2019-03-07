@@ -926,7 +926,7 @@ static char* ngx_http_session_binding_proxy(ngx_conf_t *cf, ngx_command_t *cmd, 
 	switch(ngx_http_session_binding_proxy_generate_random_string(&(sbplcf->key), ngx_http_sbp_key_length))
 	{
 		case 0:
-			ngx_conf_log_error(NGX_LOG_EMERG, cf, 0,
+			ngx_conf_log_error(NGX_LOG_DEBUG, cf, 0,
 				"random key: %V",&(sbplcf->key));
 			break;
 		case 1:
@@ -982,7 +982,7 @@ static char* ngx_http_session_binding_proxy_key(ngx_conf_t *cf, ngx_command_t *c
 	sbplcf->key.len = ngx_http_sbp_key_length;
 	sbplcf->key.data = value[1].data;
 
-	ngx_conf_log_error(NGX_LOG_EMERG, cf, 0,
+	ngx_conf_log_error(NGX_LOG_DEBUG, cf, 0,
 				"random key override: %V",&(sbplcf->key));
 
 	return NGX_CONF_OK;
