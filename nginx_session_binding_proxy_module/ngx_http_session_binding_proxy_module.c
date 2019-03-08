@@ -541,7 +541,7 @@ static ngx_int_t ngx_http_session_binding_proxy_header_filter(ngx_http_request_t
 			i = 0;
 		}
 
-		if(ngx_strncmp((&header[i])->key.data, "Set-Cookie",10) == 0) { //If the header is a Set-Cookie header
+		if (ngx_strncasecmp(header[i].key.data, (unsigned char *) "set-cookie",10) == 0) { //If the header is a Set-Cookie header
 			for(j = 0;j<sbplcf->variables->nelts;j++) {//See if this cookie needs to be encrypted (specified in the conf)
 				if(ngx_strncmp((&header[i])->value.data, variable[j].data, variable[j].len) != 0) {
 					continue;
